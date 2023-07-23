@@ -1,4 +1,28 @@
- AOS.init({
+// Function to calculate experience in years and months
+function calculateExperience(startDate) {
+    const currentDate = new Date();
+    const start = new Date(startDate);
+    const years = currentDate.getFullYear() - start.getFullYear();
+    const months = currentDate.getMonth() - start.getMonth();
+    const totalMonths = years * 12 + months;
+    return totalMonths;
+  }
+
+  // Function to format the experience in years and months
+  function formatExperience(totalMonths) {
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    return years + " years and " + months + " months";
+  }
+
+  // Update the "Experience" section with the calculated experience
+  const startDate = "2019-08-19"; // Replace this with your actual start date
+  const totalMonths = calculateExperience(startDate);
+  const formattedExperience = formatExperience(totalMonths);
+  document.getElementById("experience").textContent = formattedExperience;
+
+
+AOS.init({
  	duration: 800,
  	easing: 'slide'
  });
